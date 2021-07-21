@@ -1,7 +1,7 @@
 function computerPlay(){
     //returns a random number between 0 and 2
     let randomNumber = Math.floor(Math.random()*3);
-    let selectionComputer = "none";
+    let selectionComputer = undefined;
 
     //based of the number, it selects, rock, paper or scissors
     switch(randomNumber) {
@@ -65,16 +65,51 @@ function getSelectionPlayer() {
     return selectionPlayer;
 }
 
-
-function game() {
-    //plays 5 round for
-    //in these rounds
+function hasUserWon (userPoint, computerPoint) {
+    if (userPoint > computerPoint) {
+        return true
+    } else if (userPoint < computerPoint) {
+        return false
+    }
 }
 
+function game() {
+    //plays 5 round
+    //in these rounds prints winner message to the console
+    //has 2 var with a number, which represented the wins
+    //after 5 rounds the winner is the var with the higher value
 
-let selectionComputer = "rock";
-let selectionPlayer = getSelectionPlayer();
+    //set the count variables
+    let userPoint = 0;
+    let computerPoint = 0;
 
-selectionComputer = computerPlay();
-let userIsWinner = playRound(selectionPlayer, selectionComputer);
-console.log(getWinnerMessage(userIsWinner, selectionPlayer, selectionComputer));
+
+    //for loop, which loops 5 times
+    for (let i = 0; i < 4; i++) {
+        console.log(i);
+        //gets the selected items, the computer and user want to play
+        let selectionComputer = computerPlay();
+        let selectionPlayer = getSelectionPlayer();
+        
+        //looks up, who won and prints the result in the console
+        let userIsWinner = playRound(selectionPlayer, selectionComputer);
+        let winnerMessage = getWinnerMessage(userIsWinner, selectionPlayer, selectionComputer);
+        console.log(winnerMessage)
+
+        //adds one poin to the score of the winner
+        if (userIsWinner) {
+            userPoint += 1;
+        } else if (!userIsWinner){
+            computerPoint += 1;
+        }
+    }
+
+    //prints out the score and the winner
+    console.log(
+        `You scored ${userPoint} points and the computer scored ${computerPoint} points.`
+        );
+    
+    console.log(hasUserWon(userPoint, computerPoint) ? "YOU WON!" : "THE COMPUTER WON!")
+
+
+game();
