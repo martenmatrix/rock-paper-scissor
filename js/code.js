@@ -1,9 +1,7 @@
-let selectionComputer = "none";
-let selectionPlayer = "none";
-
 function computerPlay(){
     //returns a random number between 0 and 2
-    randomNumber = Math.floor(Math.random()*3);
+    let randomNumber = Math.floor(Math.random()*3);
+    let selectionComputer = "none";
 
     //based of the number, it selects, rock, paper or scissors
     switch(randomNumber) {
@@ -17,6 +15,8 @@ function computerPlay(){
             selectionComputer = "scissors";
             break;
     }
+
+    return selectionComputer;
 }
 
 function playRound(selectionPlayer, selectionComputer) {
@@ -35,11 +35,15 @@ function playRound(selectionPlayer, selectionComputer) {
             (selectionComputer === "scissors" && selectionPlayer === "paper")
     ) 
     {
-            userIsWinner = true;
-    } else {
             userIsWinner = false;
+    } else {
+            userIsWinner = true;
     }
 
+    return userIsWinner;
+}
+
+function getWinnerMessage(userIsWinner, selectionPlayer, selectionComputer) {
     //returns a string, which states who won and because of what reason
     switch (userIsWinner) {
         case true:
@@ -51,5 +55,26 @@ function playRound(selectionPlayer, selectionComputer) {
     }
 }
 
+function getSelectionPlayer() {
+    //shows an alert box where to user can enter his selelction for the next play
+    //converts the selection to lowercase
+
+    let selectionPlayer = prompt("Please enter your selection for the next round. [Scissors, Rock, Paper]")
+    selectionPlayer = selectionPlayer.toLowerCase();
+
+    return selectionPlayer;
+}
+
+
+function game() {
+    //plays 5 round for
+    //in these rounds
+}
+
+
+let selectionComputer = "rock";
+let selectionPlayer = getSelectionPlayer();
+
 selectionComputer = computerPlay();
-console.log(playRound("rock", "scissors"));
+let userIsWinner = playRound(selectionPlayer, selectionComputer);
+console.log(getWinnerMessage(userIsWinner, selectionPlayer, selectionComputer));
