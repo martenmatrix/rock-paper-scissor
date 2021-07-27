@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+}
+
+#user-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.user-btn {
+    background-color: white;
+
+    border: solid black 2px;
+    border-radius: 4px;
+
+    width: 5em;
+    height: 5em;
+    margin: 1em;
+
+    transition-duration: 0.2s;
+    transition-property: background-color, transform;
+}
+
+.user-btn:hover {
+    background-color: rgba(128, 128, 128, 0.26);
+}
+
+.user-btn:active {
+    transform: translateY(5px);
+}
+
+
+.user-btn img {
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
