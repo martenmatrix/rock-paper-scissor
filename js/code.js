@@ -73,3 +73,14 @@ function hasUserWon (userPoint, computerPoint) {
     }
 }
 
+function playRound(event) {
+    let playerSelection = event.currentTarget.getAttribute('data-selection');
+}
+
+const buttonUserScissors = document.querySelector('#user-scissors');
+const buttonUserRock = document.querySelector('#user-scissors');
+const buttonUserPaper = document.querySelector('#user-paper');
+
+const buttons = Array.from(document.querySelectorAll('#user-buttons > button'));
+
+buttons.forEach(button => button.addEventListener('click', playRound));

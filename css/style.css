@@ -8,6 +8,7 @@ h1 {
 }
 
 .user-btn {
+    z-index: 10;
     background-color: white;
 
     border: solid black 2px;
