@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+}
+
 #user-buttons {
     display: flex;
     justify-content: center;
@@ -30,6 +34,18 @@ h1 {
     transform: translateY(5px);
 }
 
+#score {
+    display: flex;
+    justify-content: center;
+}
+
+#score div {
+    margin: 1em;
+}
+
+#score #divider {
+    margin-top: 2.2em;
+}
 
 .user-btn img {
     vertical-align: middle;
