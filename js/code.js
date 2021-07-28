@@ -66,6 +66,26 @@ function getWinnerMessage(userIsWinner, selectionPlayer, selectionComputer) {
     }
 }
 
+function editScore(userIsWinner) {
+    const scoreUserParagraph = document.querySelector('#user > h1');
+    const scoreComputerParagraph = document.querySelector('#computer > h1');
+
+    
+
+    //returns a string, which states who won and because of what reason
+    switch (userIsWinner) {
+        case true:
+            playerScore += 1;
+            scoreUserParagraph.textContent = playerScore;
+            break;
+        case false:
+            computerScore += 1;
+            scoreComputerParagraph.textContent = computerScore;
+            break;
+    }
+
+}
+
 function getSelectionPlayer() {
     //shows an alert box where to user can enter his selelction for the next play
     //converts the selection to lowercase
@@ -84,6 +104,14 @@ function hasUserWon (userPoint, computerPoint) {
     }
 }
 
+function endGame() {
+    if(playerScore == 5) {
+        alert("You've won the game!");
+    } else if(computerScore == 5) {
+        alert("You've lost the game!");
+    }
+}
+
 function playRound(event) {
     let selectionPlayer = String((event.currentTarget).getAttribute('data-selection'));
     let selectionComputer = computerPlay();
@@ -95,14 +123,19 @@ function playRound(event) {
     currentGameLog.textContent = message;
     gameLogDiv.appendChild(currentGameLog);
     
+    editScore(userIsWinner);
+    endGame();
+    
 }
 
 const buttonUserScissors = document.querySelector('#user-scissors');
 const buttonUserRock = document.querySelector('#user-scissors');
 const buttonUserPaper = document.querySelector('#user-paper');
-
-const buttons = Array.from(document.querySelectorAll('#user-buttons > button'));
-
 const gameLogDiv = document.querySelector('#game-log');
 
+const buttons = Array.from(document.querySelectorAll('#user-buttons > button'));
 buttons.forEach(button => button.addEventListener('click', playRound));
+
+var playerScore = 0;
+var computerScore = 0;
+
